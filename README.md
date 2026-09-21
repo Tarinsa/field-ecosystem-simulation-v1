@@ -1,5 +1,7 @@
 # 🦊Field Ecosystem Simulation
 An agent based model of a field ecosystem containing grass, rabbits and foxes in Python with Pygame. Inherited traits mutate through generations to allow for natural selection to emerge over time, with changes to population and traits plotted with matplotlib at the end of a simulation. Traits that can change include speed, detection radius and random wandering.
+
+## Technologies
 - `Python`
 - `Pygame`
 - `Numpy`
