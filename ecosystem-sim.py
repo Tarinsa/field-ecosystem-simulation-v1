@@ -7,12 +7,14 @@ import matplotlib.pyplot as plt
 random.seed(1300)
 
 
-#INITALISATION CONFIG ==========================================================================================================================================================================
+#CONFIG ==========================================================================================================================================================================
 SCREEN_HEIGHT =600
 SCREEN_WIDTH = 1000
 CELL_SIZE = 120
 ENABLE_RENDER = True
 MAX_TICKS = 5000
+SEED = 1300
+
 
 INITIAL_GRASS = 670
 INITIAL_RABBIT = 100
@@ -36,7 +38,9 @@ rabbit_detection_radius_list = []
 fox_detection_radius_list = []
 
 
-#fauna class ----------------------------------------------------------------------------------
+#Seed
+random.seed(1300)
+
 
 
 
@@ -78,14 +82,14 @@ SPECIES = {
 
 
 
-
+#Fauna Class
 class Fauna:
     def __init__(self, species, position, heritable_traits = {}):
         self.species = species
         self.data = SPECIES[species]
         h_t = heritable_traits
 
-
+        #Non-hereditary Traits
         self.position = list(position)
         self.sex = random.randint(0, 1) # 0 = Male
         self.target = None
@@ -93,7 +97,7 @@ class Fauna:
         self.energy = h_t.get("initial_energy", self.data ["initial_energy"])
         self.targetted = None
 
-
+        #Hereditary Traits
         self.speed = h_t.get("speed", self.data ["speed"])
         self.detection_radius = h_t.get("detection_radius", self.data ["detection_radius"])
         self.lifespan = h_t.get("lifespan", self.data ["lifespan"])
@@ -108,17 +112,19 @@ class Fauna:
 
 
 
-
+        #Time-Affected Traits
         self.mating_cooldown = 200 +random.randint(-50, 160)
         self.lifespan = float(SPECIES[species]["lifespan"])
         self.life_countdown = float(SPECIES[species]["lifespan"]) + random.randint(-250, 300)
 
 
+    #Random Movement
     def move(self, speed):
         self.position[0] += random.uniform(-speed, speed)
         self.position[1] += random.uniform(-speed, speed)
         self.energy -= (0.4 + speed/6)
 
+    #Hunting
     def hunt(self, prey_list, prey_species, speed, detection_radius):
         
         if self.target is not None and self.target.energy <= 0:
@@ -156,11 +162,11 @@ class Fauna:
                     else:
                         self.target = None
 
+    #Mating
     def mate(self, animals, speed, detection_radius, master_animals):
         
         if self.mating_cooldown <= 0:
 
-            #Mating Code
             
             if self.mating_target is None and self.target is None and self.mating_cooldown == 0:
 
@@ -215,7 +221,7 @@ class Fauna:
 
 
 
-
+#Flora Class
 class Flora:
     def __init__(self, species, position, energy):
         self.species = species
@@ -231,7 +237,7 @@ class Flora:
 
 
 
-
+#Obtain Adjacent Cells 
 def get_adjacent(grid, position, cell_size):
     adjacent = []
     cell_x = int(position[0] // cell_size)
@@ -242,6 +248,7 @@ def get_adjacent(grid, position, cell_size):
     return adjacent
 
 
+#Update - runs once per tick
 def update(animals, grass):
     #Update live organism lists
     grass = [grassPatch for grassPatch in grass if grassPatch.energy > 0]
@@ -339,6 +346,7 @@ def update(animals, grass):
 
     return animals, grass
 
+#Render Graphics and Entity Counts
 def render(animals, grass):
 
 
@@ -408,7 +416,7 @@ for i in range(0, INITIAL_FOX):
 
 
 
-#pygame setup -----------------------------------------------------------------------------------------------------------------------
+#pygame setup
 
 
 pygame.init()
@@ -441,7 +449,7 @@ while running and tick_count < MAX_TICKS:
 
     screen.fill((50, 50, 50))
 
-#Update and Render ---------------------------------------------------------------------------------------------------------------------------------------
+#Update and Render
 
 
     animals, grass = update(animals, grass)
@@ -500,10 +508,6 @@ while running and tick_count < MAX_TICKS:
 
 
 
-
-#Animal reproduction --------------------------------------------------------------------------------------------------------------------
-
-
                     
 
 
@@ -536,8 +540,8 @@ print(f'mean framerate : {fps_sum/number_of_ticks}  fps')
 
 
 
-
-figure, axes = plt.subplots(2, 4, figsize = (18,7))
+#Population Change Plot
+figure, axes = plt.subplots(2, 3, figsize = (18,7))
 axes[0,0].plot(ticks, rabbit_count_list)
 axes[1,0].plot(ticks, fox_count_list, color = "orange")
 axes[0,0].set_title("Rabbit Populations")
@@ -556,8 +560,5 @@ axes[1,2].set_title("Fox Detection Radius Change")
 axes[0,2].plot(ticks, rabbit_detection_radius_list)
 axes[0,2].set_title("Rabbit Detection Radius Change")
 
-axes[1,3].plot(ticks, fox_detection_radius_list, color = "orange")
-axes[1,3].set_title("Fox Detection Radius Change")
-axes[0,3].plot(ticks, rabbit_detection_radius_list)
-axes[0,3].set_title("Rabbit Detection Radius Change")
+
 plt.show()
