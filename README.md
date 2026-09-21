@@ -1,17 +1,15 @@
 # 🦊Field Ecosystem Simulation
-An ecosystem simulation with natural selection and graphing of population and trait changes over time made with Python using pygame, numpy and matplotlib. Contains a food chain with grass, rabbits and foxes with traits that can change over generations, shown at the end of each simulation in an array of subplots.
-
-## Technologies
+An agent based model of a field ecosystem containing grass, rabbits and foxes in Python with Pygame. Inherited traits mutate through generations to allow for natural selection to emerge over time, with changes to population and traits plotted with matplotlib at the end of a simulation. Traits that can change include speed, detection radius and random wandering.
 - Python
 - Pygame
 - Numpy
 - Matplotlib
 
 ## Features
-- Energy based actions so there are trade-offs to trait changes
+- Energy based actions so there are trade-offs to increases in speed and random wandering
 - Inheritable traits (speed, detection radius, random wandering) with mutation over generations
 - Seeded and headless options for reproducible results
-- Species traits defined in an initial dictionary for seamless addition of new fauna
+- Species traits defined in an initial dictionary for easier addition of new fauna
 - Spatial hash for optimised performance with large amounts of entities
 
 ## Running the Project
@@ -19,7 +17,6 @@ An ecosystem simulation with natural selection and graphing of population and tr
 2. Install dependencies (pip install pygame numpy matplotlib)
 3. Set "ENABLE_RENDER", "MAX_TICKS" and the seed at the top of the .py file to configure the simulation to your liking. The population and trait-change plots will show once the simulation ends or is manually quit.
 4. Run the .py file
-
 
 
 
