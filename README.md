@@ -23,7 +23,10 @@ An agent based model of a field ecosystem containing grass, rabbits and foxes in
 ### GUI Screenshots 
 
 <img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/503c3a3b-a706-4b33-a7f9-5f1d9c8ed207" />
-<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/c574c3b7-a2c0-4155-a528-de7549129f5b" />
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/db5868c6-f3f4-4dea-98cb-cce72a8a50fd" />
+
+
+(Results shown use seed 1300)
 
 
 
