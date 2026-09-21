@@ -4,7 +4,6 @@ import pygame
 from collections import defaultdict
 import matplotlib.pyplot as plt
 
-random.seed(1300)
 
 
 #CONFIG ==========================================================================================================================================================================
@@ -39,7 +38,7 @@ fox_detection_radius_list = []
 
 
 #Seed
-random.seed(1300)
+random.seed(SEED)
 
 
 
