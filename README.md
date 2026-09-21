@@ -18,5 +18,10 @@ An agent based model of a field ecosystem containing grass, rabbits and foxes in
 3. Set "ENABLE_RENDER", "MAX_TICKS" and the seed at the top of the .py file to configure the simulation to your liking. The population and trait-change plots will show once the simulation ends or is manually quit.
 4. Run the .py file
 
+## Preview and Results
+
+### GUI Screenshots 
+
+<img width="996" height="594" alt="image" src="https://github.com/user-attachments/assets/503c3a3b-a706-4b33-a7f9-5f1d9c8ed207" />
 
 
